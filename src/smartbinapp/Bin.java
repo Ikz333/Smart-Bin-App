@@ -88,5 +88,9 @@ public class Bin {
     public String toString() {
         return "Bin{" + "BinID=" + BinID + ", Location=" + Location + ", Zone=" + Zone + ", BinType=" + BinType + ", FillLevel=" + FillLevel + ", BatteryLevel=" + BatteryLevel + ", Status=" + Status + '}';
     }
-
+    
+    public String getCollectionPriority() {
+        return "Normal";
+    }
+    
 }
