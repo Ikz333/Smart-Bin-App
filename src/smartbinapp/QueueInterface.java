@@ -16,4 +16,8 @@ public interface QueueInterface {
 
     public Object dequeue();
     
+    public Object peek();
+    
+    public int size();
+    
 }

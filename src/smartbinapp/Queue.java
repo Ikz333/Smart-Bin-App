@@ -34,4 +34,21 @@ public class Queue implements QueueInterface {
             return null;
         }
     }
+    
+    public Object peek() {
+        if (!Queue.isEmpty()) {
+            return Queue.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    public int size() {
+        return Queue.size();
+    }
+
+    @Override
+    public String toString() {
+        return Queue.toString();
+    }
 }

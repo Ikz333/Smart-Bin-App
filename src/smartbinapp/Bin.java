@@ -10,13 +10,13 @@ package smartbinapp;
  * @author ikram
  */
 public class Bin {
-    String BinID;
-    String Location;
-    String Zone;
-    String BinType;
-    int FillLevel;
-    int BatteryLevel;
-    String Status;
+    private String BinID;
+    private String Location;
+    private String Zone;
+    private String BinType;
+    private int FillLevel;
+    private int BatteryLevel;
+    private String Status;
 
     public Bin(String BinID, String Location, String Zone, String BinType, int FillLevel, int BatteryLevel, String Status) {
         this.BinID = BinID;
@@ -88,7 +88,5 @@ public class Bin {
     public String toString() {
         return "Bin{" + "BinID=" + BinID + ", Location=" + Location + ", Zone=" + Zone + ", BinType=" + BinType + ", FillLevel=" + FillLevel + ", BatteryLevel=" + BatteryLevel + ", Status=" + Status + '}';
     }
-    
-    
-    
+
 }

@@ -51,5 +51,18 @@ public class Stack implements StackInterface {
     public void push(Object newItem) {
         Stack.add(0, (String) newItem);
     }
+    
+    public Object peek() {
+        if (!Stack.isEmpty()) {
+            return Stack.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return Stack.toString();
+    }
 
 }

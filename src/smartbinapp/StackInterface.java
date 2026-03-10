@@ -17,5 +17,7 @@ public interface StackInterface {
     public void push(Object newItem);
 
     public Object pop();
+    
+    public Object peek();
 
 }
