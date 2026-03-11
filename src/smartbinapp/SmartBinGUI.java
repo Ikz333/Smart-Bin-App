@@ -34,7 +34,11 @@ public class SmartBinGUI extends javax.swing.JFrame {
         addBTN = new javax.swing.JButton();
         addLBL = new javax.swing.JLabel();
         linePNL = new javax.swing.JPanel();
-        CardPNL = new javax.swing.JPanel();
+        cardPNL = new javax.swing.JPanel();
+        editPNL = new javax.swing.JPanel();
+        editTitle = new javax.swing.JLabel();
+        addPNL = new javax.swing.JPanel();
+        addTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,13 +89,6 @@ public class SmartBinGUI extends javax.swing.JFrame {
             navPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(navPNLLayout.createSequentialGroup()
                 .addGroup(navPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(navPNLLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(exitLBL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navPNLLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(addLBL))
                     .addComponent(addBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(navPNLLayout.createSequentialGroup()
                         .addGroup(navPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +96,13 @@ public class SmartBinGUI extends javax.swing.JFrame {
                                 .addGap(35, 35, 35)
                                 .addComponent(editLBL))
                             .addComponent(editBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(exitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(exitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(navPNLLayout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(exitLBL))
+                            .addGroup(navPNLLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(addLBL)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -135,27 +138,41 @@ public class SmartBinGUI extends javax.swing.JFrame {
         );
         linePNLLayout.setVerticalGroup(
             linePNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 485, Short.MAX_VALUE)
         );
 
         getContentPane().add(linePNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, 489));
 
-        CardPNL.setBackground(new java.awt.Color(0, 102, 102));
-        CardPNL.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        CardPNL.setForeground(new java.awt.Color(255, 255, 255));
+        cardPNL.setBackground(new java.awt.Color(0, 102, 102));
+        cardPNL.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cardPNL.setForeground(new java.awt.Color(255, 255, 255));
+        cardPNL.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout CardPNLLayout = new javax.swing.GroupLayout(CardPNL);
-        CardPNL.setLayout(CardPNLLayout);
-        CardPNLLayout.setHorizontalGroup(
-            CardPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
-        );
-        CardPNLLayout.setVerticalGroup(
-            CardPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        editPNL.setBackground(new java.awt.Color(0, 102, 102));
+        editPNL.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editPNL.setForeground(new java.awt.Color(255, 255, 255));
+        editPNL.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(CardPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 0, 560, 490));
+        editTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        editTitle.setForeground(new java.awt.Color(255, 255, 255));
+        editTitle.setText("Smart Bin Management");
+        editPNL.add(editTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        cardPNL.add(editPNL, "card2");
+
+        addPNL.setBackground(new java.awt.Color(0, 102, 102));
+        addPNL.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addPNL.setForeground(new java.awt.Color(255, 255, 255));
+        addPNL.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        addTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        addTitle.setForeground(new java.awt.Color(255, 255, 255));
+        addTitle.setText("Queue and Stack Manager");
+        addPNL.add(addTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+
+        cardPNL.add(addPNL, "card3");
+
+        getContentPane().add(cardPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 560, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -167,10 +184,14 @@ public class SmartBinGUI extends javax.swing.JFrame {
 
     private void editBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBTNActionPerformed
         // TODO add your handling code here:
+        editPNL.setVisible(true);
+        addPNL.setVisible(false);
     }//GEN-LAST:event_editBTNActionPerformed
 
     private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
         // TODO add your handling code here:
+        editPNL.setVisible(false);
+        addPNL.setVisible(true);
     }//GEN-LAST:event_addBTNActionPerformed
 
     /**
@@ -210,11 +231,15 @@ public class SmartBinGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel CardPNL;
     private javax.swing.JButton addBTN;
     private javax.swing.JLabel addLBL;
+    private javax.swing.JPanel addPNL;
+    private javax.swing.JLabel addTitle;
+    private javax.swing.JPanel cardPNL;
     private javax.swing.JButton editBTN;
     private javax.swing.JLabel editLBL;
+    private javax.swing.JPanel editPNL;
+    private javax.swing.JLabel editTitle;
     private javax.swing.JButton exitBTN;
     private javax.swing.JLabel exitLBL;
     private javax.swing.JPanel linePNL;
