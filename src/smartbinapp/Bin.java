@@ -27,6 +27,10 @@ public class Bin {
         this.BatteryLevel = BatteryLevel;
         this.Status = Status;
     }
+    
+    public Bin() {
+        
+    }
 
     public String getBinID() {
         return BinID;

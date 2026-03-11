@@ -3,18 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package smartbinapp;
-
+import java.util.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ikram
  */
 public class SmartBinGUI extends javax.swing.JFrame {
-
+    ArrayList <Bin> Bins;
     /**
      * Creates new form GuiApp
      */
     public SmartBinGUI() {
         initComponents();
+        Bins = new ArrayList<>();
     }
 
     /**
@@ -262,6 +264,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
         binTypeCB.setBackground(new java.awt.Color(0, 0, 0));
         binTypeCB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binTypeCB.setForeground(new java.awt.Color(255, 255, 255));
+        binTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "General Waste", "Recycling", "Organic" }));
         editPNL.add(binTypeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 140, -1));
 
         binIdTF.setBackground(new java.awt.Color(0, 0, 0));
@@ -273,6 +276,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
         statusCB.setBackground(new java.awt.Color(0, 0, 0));
         statusCB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         statusCB.setForeground(new java.awt.Color(255, 255, 255));
+        statusCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Active", "Full", "Needs Maintenance", "Offline" }));
         editPNL.add(statusCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 140, -1));
 
         locationTF.setBackground(new java.awt.Color(0, 0, 0));
@@ -295,12 +299,22 @@ public class SmartBinGUI extends javax.swing.JFrame {
         clearBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         clearBTN.setForeground(new java.awt.Color(255, 255, 255));
         clearBTN.setText("Clear");
+        clearBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBTNActionPerformed(evt);
+            }
+        });
         editPNL.add(clearBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
 
         addBTN.setBackground(new java.awt.Color(0, 0, 0));
         addBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         addBTN.setForeground(new java.awt.Color(255, 255, 255));
         addBTN.setText("Add");
+        addBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBTNActionPerformed(evt);
+            }
+        });
         editPNL.add(addBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
 
         searchBTN.setBackground(new java.awt.Color(0, 0, 0));
@@ -463,6 +477,42 @@ public class SmartBinGUI extends javax.swing.JFrame {
         editPNL.setVisible(false);
         addQSPNL.setVisible(true);
     }//GEN-LAST:event_addQSBTNActionPerformed
+
+    private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
+        // TODO add your handling code here:
+        String binID = binIdTF.getText();
+        String location = locationTF.getText();
+        String zone = zoneTF.getText();
+        String binType = (String) binTypeCB.getSelectedItem();
+        String fillLevel = fillLvlTF.getText();
+        String batteryLevel = battLvlTF.getText();
+        String status = (String) statusCB.getSelectedItem();
+        
+        Bin b = new Bin();
+        
+        b.setBinID(binID);
+        b.setLocation(location);
+        b.setZone(zone);
+        b.setBinType(binType);
+        b.setFillLevel(Integer.parseInt(fillLevel));
+        b.setBatteryLevel(Integer.parseInt(batteryLevel));
+        b.setStatus(status);
+        
+        Bins.add(b);
+        JOptionPane.showMessageDialog(null, "Bin successfully added!");
+    }//GEN-LAST:event_addBTNActionPerformed
+
+    private void clearBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBTNActionPerformed
+        // TODO add your handling code here:
+        binIdTF.setText("");
+        locationTF.setText("");
+        zoneTF.setText("");
+        binTypeCB.setSelectedItem("None");
+        fillLvlTF.setText("");
+        battLvlTF.setText("");
+        statusCB.setSelectedItem("None");
+        resultsTA.append("");
+    }//GEN-LAST:event_clearBTNActionPerformed
 
     /**
      * @param args the command line arguments
