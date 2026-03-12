@@ -14,6 +14,11 @@ public class RecyclingBin extends Bin {
         super(binID, location, zone, "Recycling", fillLevel, batteryLevel, status);
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public String getCollectionPriority() {
         if (getFillLevel() >= 70) {
             return "High";

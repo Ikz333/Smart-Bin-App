@@ -14,6 +14,11 @@ public class OrganicBin extends Bin {
         super(binID, location, zone, "Organic", fillLevel, batteryLevel, status);
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public String getCollectionPriority() {
         if (getFillLevel() >= 60) {
             return "High";

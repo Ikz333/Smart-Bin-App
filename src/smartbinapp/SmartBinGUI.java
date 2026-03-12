@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
  */
 public class SmartBinGUI extends javax.swing.JFrame {
     ArrayList <Bin> Bins;
+    QueueInterface q = new Queue();
+    StackInterface s = new Stack();
     /**
      * Creates new form GuiApp
      */
@@ -84,6 +86,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
         pushBTN = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        ClearBTN1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -385,18 +388,33 @@ public class SmartBinGUI extends javax.swing.JFrame {
         pQueueBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         pQueueBTN.setForeground(new java.awt.Color(255, 255, 255));
         pQueueBTN.setText("Peek Queue");
+        pQueueBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pQueueBTNActionPerformed(evt);
+            }
+        });
         addQSPNL.add(pQueueBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
 
         enqueueBTN.setBackground(new java.awt.Color(0, 0, 0));
         enqueueBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         enqueueBTN.setForeground(new java.awt.Color(255, 255, 255));
         enqueueBTN.setText("Enqueue");
+        enqueueBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enqueueBTNActionPerformed(evt);
+            }
+        });
         addQSPNL.add(enqueueBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         dequeueBTN.setBackground(new java.awt.Color(0, 0, 0));
         dequeueBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         dequeueBTN.setForeground(new java.awt.Color(255, 255, 255));
         dequeueBTN.setText("Dequeue");
+        dequeueBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dequeueBTNActionPerformed(evt);
+            }
+        });
         addQSPNL.add(dequeueBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
 
         qOutputTA.setEditable(false);
@@ -449,18 +467,33 @@ public class SmartBinGUI extends javax.swing.JFrame {
         pStackBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         pStackBTN.setForeground(new java.awt.Color(255, 255, 255));
         pStackBTN.setText("Peek Stack");
+        pStackBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pStackBTNActionPerformed(evt);
+            }
+        });
         addQSPNL.add(pStackBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
 
         popBTN.setBackground(new java.awt.Color(0, 0, 0));
         popBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         popBTN.setForeground(new java.awt.Color(255, 255, 255));
         popBTN.setText("Pop");
+        popBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                popBTNActionPerformed(evt);
+            }
+        });
         addQSPNL.add(popBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
 
         pushBTN.setBackground(new java.awt.Color(0, 0, 0));
         pushBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         pushBTN.setForeground(new java.awt.Color(255, 255, 255));
         pushBTN.setText("Push");
+        pushBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pushBTNActionPerformed(evt);
+            }
+        });
         addQSPNL.add(pushBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stack-icon.png"))); // NOI18N
@@ -468,6 +501,17 @@ public class SmartBinGUI extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/queue-icon.png"))); // NOI18N
         addQSPNL.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, -1));
+
+        ClearBTN1.setBackground(new java.awt.Color(0, 0, 0));
+        ClearBTN1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ClearBTN1.setForeground(new java.awt.Color(255, 255, 255));
+        ClearBTN1.setText("Clear");
+        ClearBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearBTN1ActionPerformed(evt);
+            }
+        });
+        addQSPNL.add(ClearBTN1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, -1));
 
         cardPNL.add(addQSPNL, "card3");
 
@@ -498,37 +542,44 @@ public class SmartBinGUI extends javax.swing.JFrame {
         try {
             if (Bins.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Array list is empty");
+                return;
+            }
 
-            } else {
+            if (binIdTF.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Please fill BinID field");
+                return;
+            }
 
-                if (binIdTF.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please fill BinID field");
-                } else {
-                    String binID = binIdTF.getText();
-                    for (Bin b : Bins) {
-                        if (b.getBinID().equalsIgnoreCase(binID)) {
-                            binID = binIdTF.getText();
-                            String location = locationTF.getText();
-                            String zone = zoneTF.getText();
-                            String binType = (String) binTypeCB.getSelectedItem();
-                            String fillLevel = fillLvlTF.getText();
-                            String batteryLevel = battLvlTF.getText();
-                            String status = (String) statusCB.getSelectedItem();
-                            
-                            b.setBinID(binID);
-                            b.setLocation(location);
-                            b.setZone(zone);
-                            b.setBinType(binType);
-                            b.setFillLevel(Integer.parseInt(fillLevel));
-                            b.setBatteryLevel(Integer.parseInt(batteryLevel));
-                            b.setStatus(status);
-                            JOptionPane.showMessageDialog(null, "Bin has been successfully updated");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Bin ID not found, try again");
-                        }
-                    }
+            String binID = binIdTF.getText();
+            boolean found = false;
+
+            for (Bin b : Bins) {
+                if (b.getBinID().equalsIgnoreCase(binID)) {
+                    String location = locationTF.getText();
+                    String zone = zoneTF.getText();
+                    String binType = (String) binTypeCB.getSelectedItem();
+                    String fillLevel = fillLvlTF.getText();
+                    String batteryLevel = battLvlTF.getText();
+                    String status = (String) statusCB.getSelectedItem();
+
+                    b.setBinID(binID);
+                    b.setLocation(location);
+                    b.setZone(zone);
+                    b.setBinType(binType);
+                    b.setFillLevel(Integer.parseInt(fillLevel));
+                    b.setBatteryLevel(Integer.parseInt(batteryLevel));
+                    b.setStatus(status);
+
+                    found = true;
+                    JOptionPane.showMessageDialog(null, "Bin has been successfully updated");
+                    break;
                 }
             }
+
+            if (!found) {
+                JOptionPane.showMessageDialog(null, "Bin ID not found, try again");
+            }
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Fill level and battery level must be numbers.");
         }
@@ -539,106 +590,189 @@ public class SmartBinGUI extends javax.swing.JFrame {
         binIdTF.setText("");
         locationTF.setText("");
         zoneTF.setText("");
-        binTypeCB.setSelectedItem("None");
+        binTypeCB.setSelectedIndex(0);
         fillLvlTF.setText("");
         battLvlTF.setText("");
-        statusCB.setSelectedItem("None");
+        statusCB.setSelectedIndex(0);
         resultsTA.setText("");
     }//GEN-LAST:event_clearBTNActionPerformed
 
     private void searchBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBTNActionPerformed
         // TODO add your handling code here:
-        try {
-            if (Bins.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Array list is empty");
+        if (Bins.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Array list is empty");
+            return;
+        }
 
-            } else {
+        if (binIdTF.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill BinID field");
+            return;
+        }
 
-                if (binIdTF.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please fill BinID field");
-                } else {
-                    String binID = binIdTF.getText();
-                    for (Bin b : Bins) {
-                        if (b.getBinID().equalsIgnoreCase(binID)) {
-                            resultsTA.append("BinID: " + b.getBinID() + "\n"
-                                            + "Location: " + b.getLocation() + "\n" 
-                                            + "Zone: " + b.getZone() + "\n"
-                                            + "BinType: " + b.getBinType() + "\n"
-                                            + "FillLevel: " + b.getFillLevel() + "\n"
-                                            + "BatteryLevel: " + b.getBatteryLevel() + "\n"
-                                            + "Status: " + b.getStatus());
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Bin ID not found, try again");
-                        }
-                    }
-                }
+        String binID = binIdTF.getText();
+        boolean found = false;
+        resultsTA.setText("");
+
+        for (Bin b : Bins) {
+            if (b.getBinID().equalsIgnoreCase(binID)) {
+                resultsTA.append("BinID: " + b.getBinID() + "\n"
+                        + "Location: " + b.getLocation() + "\n"
+                        + "Zone: " + b.getZone() + "\n"
+                        + "BinType: " + b.getBinType() + "\n"
+                        + "FillLevel: " + b.getFillLevel() + "\n"
+                        + "BatteryLevel: " + b.getBatteryLevel() + "\n"
+                        + "Status: " + b.getStatus() + "\n"
+                        + "Priority: " + b.getCollectionPriority() + "\n");
+                found = true;
+                break;
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Fill level and battery level must be numbers.");
+        }
+
+        if (!found) {
+            JOptionPane.showMessageDialog(null, "Bin ID not found, try again");
         }
         
     }//GEN-LAST:event_searchBTNActionPerformed
 
     private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
         // TODO add your handling code here:
-        try {
-            if (Bins.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Array list is empty");
+        if (Bins.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Array list is empty");
+            return;
+        }
 
-            } else {
+        if (binIdTF.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill BinID field");
+            return;
+        }
 
-                if (binIdTF.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please fill BinID field");
-                } else {
-                    String binID = binIdTF.getText();
-                    for (Bin b : Bins) {
-                        if (b.getBinID().equalsIgnoreCase(binID)) {
-                            Bins.remove(b);
-                            JOptionPane.showMessageDialog(null, "Bin has been successfully removed");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Bin ID not found, try again");
-                        }
-                    }
-                }
+        String binID = binIdTF.getText();
+        boolean found = false;
+
+        for (int i = 0; i < Bins.size(); i++) {
+            if (Bins.get(i).getBinID().equalsIgnoreCase(binID)) {
+                Bins.remove(i);
+                found = true;
+                JOptionPane.showMessageDialog(null, "Bin has been successfully removed");
+                break;
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Fill level and battery level must be numbers.");
+        }
+
+        if (!found) {
+            JOptionPane.showMessageDialog(null, "Bin ID not found, try again");
         }
     }//GEN-LAST:event_deleteBTNActionPerformed
 
     private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
         // TODO add your handling code here:
         try {
-            if(binIdTF.getText().equals("")){
+            if(binIdTF.getText().equals("") || locationTF.getText().equals("") || zoneTF.getText().equals("")
+            || fillLvlTF.getText().equals("") || battLvlTF.getText().equals("")) {
+
                 JOptionPane.showMessageDialog(null,"Please fill all fields");
                 return;
-            } else {
-
-                String binID = binIdTF.getText();
-                String location = locationTF.getText();
-                String zone = zoneTF.getText();
-                String binType = (String) binTypeCB.getSelectedItem();
-                String fillLevel = fillLvlTF.getText();
-                String batteryLevel = battLvlTF.getText();
-                String status = (String) statusCB.getSelectedItem();
-
-                Bin b = new Bin();
-
-                b.setBinID(binID);
-                b.setLocation(location);
-                b.setZone(zone);
-                b.setBinType(binType);
-                b.setFillLevel(Integer.parseInt(fillLevel));
-                b.setBatteryLevel(Integer.parseInt(batteryLevel));
-                b.setStatus(status);
-
-                Bins.add(b);
-                JOptionPane.showMessageDialog(null, "Bin successfully added!");
             }
+
+            String binID = binIdTF.getText();
+            String location = locationTF.getText();
+            String zone = zoneTF.getText();
+            String binType = (String) binTypeCB.getSelectedItem();
+            int fillLevel = Integer.parseInt(fillLvlTF.getText());
+            int batteryLevel = Integer.parseInt(battLvlTF.getText());
+            String status = (String) statusCB.getSelectedItem();
+
+            Bin b;
+
+            if(binType.equals("General Waste")) {
+                b = new GeneralWasteBin(binID, location, zone, fillLevel, batteryLevel, status);
+            }
+            else if(binType.equals("Recycling")) {
+                b = new RecyclingBin(binID, location, zone, fillLevel, batteryLevel, status);
+            }
+            else {
+                b = new OrganicBin(binID, location, zone, fillLevel, batteryLevel, status);
+            }
+
+            Bins.add(b);
+
+            JOptionPane.showMessageDialog(null, "Bin successfully added!");
+
         } catch(NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Fill level and battery level must be numbers.");
         }
     }//GEN-LAST:event_addBTNActionPerformed
+
+    private void enqueueBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enqueueBTNActionPerformed
+        // TODO add your handling code here:
+        String binID = binIdTF1.getText();
+
+        if(binID.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please enter a Bin ID");
+        } else {
+            q.enqueue(binID);
+            qOutputTA.setText(qOutputTA.getText() + "Enqueued: " + binID + "\n");
+            binIdTF1.setText("");
+        }
+    }//GEN-LAST:event_enqueueBTNActionPerformed
+
+    private void dequeueBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dequeueBTNActionPerformed
+        // TODO add your handling code here:
+        if(q.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Queue is empty");
+        } else {
+            String removed = (String) q.dequeue();
+            qOutputTA.setText(qOutputTA.getText() + "Dequeued: " + removed + "\n");
+        }
+    }//GEN-LAST:event_dequeueBTNActionPerformed
+
+    private void pQueueBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pQueueBTNActionPerformed
+        // TODO add your handling code here:
+        if(q.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Queue is empty");
+        } else {
+            String first = (String) q.peek();
+            qOutputTA.setText(qOutputTA.getText() + "Next in Queue: " + first + "\n");
+        }
+    }//GEN-LAST:event_pQueueBTNActionPerformed
+
+    private void pushBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pushBTNActionPerformed
+        // TODO add your handling code here:
+        String action = actionTF.getText();
+
+        if(action.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please enter an action");
+        } else {
+            s.push(action);
+            sOutputTA.setText(sOutputTA.getText() + "Pushed to Stack: " + action + "\n");
+            actionTF.setText("");
+        }
+    }//GEN-LAST:event_pushBTNActionPerformed
+
+    private void popBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popBTNActionPerformed
+        // TODO add your handling code here:
+        if(s.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Stack is empty");
+        } else {
+            String removed = (String) s.pop();
+            sOutputTA.setText(sOutputTA.getText() + "Popped from Stack: " + removed + "\n");
+        }
+    }//GEN-LAST:event_popBTNActionPerformed
+
+    private void pStackBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pStackBTNActionPerformed
+        // TODO add your handling code here:
+        if(s.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Stack is empty");
+        } else {
+            String top = (String) s.peek();
+            sOutputTA.setText(sOutputTA.getText() + "Top of Stack: " + top + "\n");
+        }
+    }//GEN-LAST:event_pStackBTNActionPerformed
+
+    private void ClearBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearBTN1ActionPerformed
+        // TODO add your handling code here:
+        qOutputTA.setText("");
+        sOutputTA.setText("");
+    }//GEN-LAST:event_ClearBTN1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -677,6 +811,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ClearBTN1;
     private javax.swing.JLabel actionLBL;
     private javax.swing.JTextField actionTF;
     private javax.swing.JButton addBTN;

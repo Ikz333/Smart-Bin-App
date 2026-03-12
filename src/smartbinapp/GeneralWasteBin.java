@@ -14,6 +14,11 @@ public class GeneralWasteBin extends Bin {
         super(binID, location, zone, "General Waste", fillLevel, batteryLevel, status);
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public String getCollectionPriority() {
         if (getFillLevel() >= 80) {
             return "High";
