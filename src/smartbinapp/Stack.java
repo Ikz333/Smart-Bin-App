@@ -12,57 +12,55 @@ import java.util.*;
  */
 public class Stack implements StackInterface {
 
-    private ArrayList<String> Stack;
+    // ArrayList used to store stack elements
+    // The first position (index 0) represents the top of the stack
+    private ArrayList<String> stack;
 
-    /**
-     * Creates a new instance of Stack
-     */
+    // Constructor that creates the ArrayList when the Stack object is made
     public Stack() {
-        Stack = new ArrayList<String>();
+        stack = new ArrayList<String>();
     }
 
+    // Checks if the stack is empty
     public boolean isEmpty() {
-        return Stack.isEmpty();
+        return stack.isEmpty();
     }
 
-    /**
-     * always false as there is no limit on the size of this ArrayList based
-     * stack
-     */
+    // Checks if the stack is full
+    // In this program it always returns false because ArrayList can grow dynamically
     public boolean isFull() {
         return false;
     }
 
-    /**
-     * removes the item from the TOP (first position) of the stack and returns
-     * it
-     */
+    // Removes and returns the top element from the stack
+    // If the stack is empty, it returns null
     public Object pop() {
-        if (!(Stack.isEmpty())) {
-            return Stack.remove(0);
+        if (!(stack.isEmpty())) {
+            return stack.remove(0);
         } else {
             return null;
         }
     }
 
-    /**
-     * puts/inserts an item onto the TOP (first position) of the stack
-     */
+    // Adds a new item to the top of the stack
     public void push(Object newItem) {
-        Stack.add(0, (String) newItem);
+        stack.add(0, (String) newItem);
     }
     
+    // Returns the top element of the stack without removing it
     public Object peek() {
-        if (!Stack.isEmpty()) {
-            return Stack.get(0);
+        if (!stack.isEmpty()) {
+            return stack.get(0);
         } else {
             return null;
         }
     }
 
+    // Converts the stack contents into a string format
+    // Useful for displaying the stack
     @Override
     public String toString() {
-        return Stack.toString();
+        return stack.toString();
     }
 
 }

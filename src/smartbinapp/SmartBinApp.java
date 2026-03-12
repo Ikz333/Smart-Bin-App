@@ -8,6 +8,7 @@ package smartbinapp;
  *
  * @author ikram
  */
+// Main Class runs program by creating a GUI
 public class SmartBinApp {
 
     /**
@@ -15,7 +16,7 @@ public class SmartBinApp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        SmartBinGUI GUI = new SmartBinGUI();
+        SmartBinGUI GUI = new SmartBinGUI(); // SmartBinGUI created
         GUI.setVisible(true);
     }
     

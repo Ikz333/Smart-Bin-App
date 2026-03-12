@@ -9,7 +9,10 @@ package smartbinapp;
  *
  * @author ikram
  */
+
+// Bin class for creation of different Bins
 public class Bin {
+    // Bin attributes with different variable types
     private String BinID;
     private String Location;
     private String Zone;
@@ -18,6 +21,7 @@ public class Bin {
     private int BatteryLevel;
     private String Status;
 
+    // Constructor for initializing to appropriate default values
     public Bin(String BinID, String Location, String Zone, String BinType, int FillLevel, int BatteryLevel, String Status) {
         this.BinID = BinID;
         this.Location = Location;
@@ -28,10 +32,12 @@ public class Bin {
         this.Status = Status;
     }
     
+    // Empty Constructor
     public Bin() {
         
     }
 
+    // Getters and Setters
     public String getBinID() {
         return BinID;
     }
@@ -87,14 +93,11 @@ public class Bin {
     public void setStatus(String Status) {
         this.Status = Status;
     }
-
-    @Override
-    public String toString() {
-        return "Bin{" + "BinID=" + BinID + ", Location=" + Location + ", Zone=" + Zone + ", BinType=" + BinType + ", FillLevel=" + FillLevel + ", BatteryLevel=" + BatteryLevel + ", Status=" + Status + '}';
-    }
     
+    // Used for Polymorphism
+    // Overriden to different types of bins, used to check if bin needs collection based on how full it is.
     public String getCollectionPriority() {
-        return "Normal";
+        return "Normal"; // returns normal
     }
     
 }

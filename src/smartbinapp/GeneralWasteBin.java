@@ -8,8 +8,11 @@ package smartbinapp;
  *
  * @author ikram
  */
+// Inheritance used 
+// GeneralWasteBin type class 
 public class GeneralWasteBin extends Bin {
 
+    // GeneralWasteBin Constructor using super class
     public GeneralWasteBin(String binID, String location, String zone, int fillLevel, int batteryLevel, String status) {
         super(binID, location, zone, "General Waste", fillLevel, batteryLevel, status);
     }
@@ -18,9 +21,10 @@ public class GeneralWasteBin extends Bin {
      *
      * @return
      */
+    // Polymorphism is used as each bin type has different rules
     @Override
     public String getCollectionPriority() {
-        if (getFillLevel() >= 80) {
+        if (getFillLevel() >= 80) { // returns high if bin exceeds limit else normal
             return "High";
         }
         return "Normal";
