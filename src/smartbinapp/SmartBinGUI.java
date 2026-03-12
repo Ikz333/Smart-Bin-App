@@ -57,11 +57,11 @@ public class SmartBinGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         resultsTA = new javax.swing.JTextArea();
         clearBTN = new javax.swing.JButton();
-        addBTN = new javax.swing.JButton();
-        searchBTN = new javax.swing.JButton();
         updateBTN = new javax.swing.JButton();
+        searchBTN = new javax.swing.JButton();
         deleteBTN = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        addBTN = new javax.swing.JButton();
         addQSPNL = new javax.swing.JPanel();
         addQSTitle = new javax.swing.JLabel();
         qOutputLBL = new javax.swing.JLabel();
@@ -231,59 +231,59 @@ public class SmartBinGUI extends javax.swing.JFrame {
         locationLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         locationLBL.setForeground(new java.awt.Color(255, 255, 255));
         locationLBL.setText("Location:");
-        editPNL.add(locationLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
+        editPNL.add(locationLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, -1, -1));
 
         binTypeLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binTypeLBL.setForeground(new java.awt.Color(255, 255, 255));
         binTypeLBL.setText("Bin Type:");
-        editPNL.add(binTypeLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
+        editPNL.add(binTypeLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
 
         battLvlLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         battLvlLBL.setForeground(new java.awt.Color(255, 255, 255));
         battLvlLBL.setText("Battery Level:");
-        editPNL.add(battLvlLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
+        editPNL.add(battLvlLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
 
         battLvlTF.setBackground(new java.awt.Color(0, 0, 0));
         battLvlTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         battLvlTF.setForeground(new java.awt.Color(255, 255, 255));
         battLvlTF.setCaretColor(new java.awt.Color(255, 255, 255));
-        editPNL.add(battLvlTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 140, -1));
+        editPNL.add(battLvlTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 150, -1));
 
         zoneTF.setBackground(new java.awt.Color(0, 0, 0));
         zoneTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         zoneTF.setForeground(new java.awt.Color(255, 255, 255));
         zoneTF.setCaretColor(new java.awt.Color(255, 255, 255));
-        editPNL.add(zoneTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 140, -1));
+        editPNL.add(zoneTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 150, -1));
 
         fillLvlTF.setBackground(new java.awt.Color(0, 0, 0));
         fillLvlTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fillLvlTF.setForeground(new java.awt.Color(255, 255, 255));
         fillLvlTF.setCaretColor(new java.awt.Color(255, 255, 255));
-        editPNL.add(fillLvlTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 140, -1));
+        editPNL.add(fillLvlTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 150, -1));
 
         binTypeCB.setBackground(new java.awt.Color(0, 0, 0));
         binTypeCB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binTypeCB.setForeground(new java.awt.Color(255, 255, 255));
         binTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "General Waste", "Recycling", "Organic" }));
-        editPNL.add(binTypeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 140, -1));
+        editPNL.add(binTypeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 150, -1));
 
         binIdTF.setBackground(new java.awt.Color(0, 0, 0));
         binIdTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binIdTF.setForeground(new java.awt.Color(255, 255, 255));
         binIdTF.setCaretColor(new java.awt.Color(255, 255, 255));
-        editPNL.add(binIdTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 140, -1));
+        editPNL.add(binIdTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 150, -1));
 
         statusCB.setBackground(new java.awt.Color(0, 0, 0));
         statusCB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         statusCB.setForeground(new java.awt.Color(255, 255, 255));
         statusCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Active", "Full", "Needs Maintenance", "Offline" }));
-        editPNL.add(statusCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 140, -1));
+        editPNL.add(statusCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 150, -1));
 
         locationTF.setBackground(new java.awt.Color(0, 0, 0));
         locationTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         locationTF.setForeground(new java.awt.Color(255, 255, 255));
         locationTF.setCaretColor(new java.awt.Color(255, 255, 255));
-        editPNL.add(locationTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 140, -1));
+        editPNL.add(locationTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 150, -1));
 
         resultsTA.setEditable(false);
         resultsTA.setBackground(new java.awt.Color(0, 0, 0));
@@ -293,7 +293,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
         resultsTA.setRows(5);
         jScrollPane1.setViewportView(resultsTA);
 
-        editPNL.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 310, 140));
+        editPNL.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 310, 150));
 
         clearBTN.setBackground(new java.awt.Color(0, 0, 0));
         clearBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -306,6 +306,42 @@ public class SmartBinGUI extends javax.swing.JFrame {
         });
         editPNL.add(clearBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
 
+        updateBTN.setBackground(new java.awt.Color(0, 0, 0));
+        updateBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        updateBTN.setForeground(new java.awt.Color(255, 255, 255));
+        updateBTN.setText("Update");
+        updateBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBTNActionPerformed(evt);
+            }
+        });
+        editPNL.add(updateBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, -1));
+
+        searchBTN.setBackground(new java.awt.Color(0, 0, 0));
+        searchBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        searchBTN.setForeground(new java.awt.Color(255, 255, 255));
+        searchBTN.setText("Search");
+        searchBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBTNActionPerformed(evt);
+            }
+        });
+        editPNL.add(searchBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, -1));
+
+        deleteBTN.setBackground(new java.awt.Color(0, 0, 0));
+        deleteBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        deleteBTN.setForeground(new java.awt.Color(255, 255, 255));
+        deleteBTN.setText("Delete");
+        deleteBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBTNActionPerformed(evt);
+            }
+        });
+        editPNL.add(deleteBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bin-icon.png"))); // NOI18N
+        editPNL.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
+
         addBTN.setBackground(new java.awt.Color(0, 0, 0));
         addBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         addBTN.setForeground(new java.awt.Color(255, 255, 255));
@@ -316,27 +352,6 @@ public class SmartBinGUI extends javax.swing.JFrame {
             }
         });
         editPNL.add(addBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
-
-        searchBTN.setBackground(new java.awt.Color(0, 0, 0));
-        searchBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        searchBTN.setForeground(new java.awt.Color(255, 255, 255));
-        searchBTN.setText("Search");
-        editPNL.add(searchBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, -1));
-
-        updateBTN.setBackground(new java.awt.Color(0, 0, 0));
-        updateBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        updateBTN.setForeground(new java.awt.Color(255, 255, 255));
-        updateBTN.setText("Update");
-        editPNL.add(updateBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, -1));
-
-        deleteBTN.setBackground(new java.awt.Color(0, 0, 0));
-        deleteBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        deleteBTN.setForeground(new java.awt.Color(255, 255, 255));
-        deleteBTN.setText("Delete");
-        editPNL.add(deleteBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bin-icon.png"))); // NOI18N
-        editPNL.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
 
         cardPNL.add(editPNL, "card2");
 
@@ -478,29 +493,46 @@ public class SmartBinGUI extends javax.swing.JFrame {
         addQSPNL.setVisible(true);
     }//GEN-LAST:event_addQSBTNActionPerformed
 
-    private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
+    private void updateBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBTNActionPerformed
         // TODO add your handling code here:
-        String binID = binIdTF.getText();
-        String location = locationTF.getText();
-        String zone = zoneTF.getText();
-        String binType = (String) binTypeCB.getSelectedItem();
-        String fillLevel = fillLvlTF.getText();
-        String batteryLevel = battLvlTF.getText();
-        String status = (String) statusCB.getSelectedItem();
-        
-        Bin b = new Bin();
-        
-        b.setBinID(binID);
-        b.setLocation(location);
-        b.setZone(zone);
-        b.setBinType(binType);
-        b.setFillLevel(Integer.parseInt(fillLevel));
-        b.setBatteryLevel(Integer.parseInt(batteryLevel));
-        b.setStatus(status);
-        
-        Bins.add(b);
-        JOptionPane.showMessageDialog(null, "Bin successfully added!");
-    }//GEN-LAST:event_addBTNActionPerformed
+        try {
+            if (Bins.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Array list is empty");
+
+            } else {
+
+                if (binIdTF.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please fill BinID field");
+                } else {
+                    String binID = binIdTF.getText();
+                    for (Bin b : Bins) {
+                        if (b.getBinID().equalsIgnoreCase(binID)) {
+                            binID = binIdTF.getText();
+                            String location = locationTF.getText();
+                            String zone = zoneTF.getText();
+                            String binType = (String) binTypeCB.getSelectedItem();
+                            String fillLevel = fillLvlTF.getText();
+                            String batteryLevel = battLvlTF.getText();
+                            String status = (String) statusCB.getSelectedItem();
+                            
+                            b.setBinID(binID);
+                            b.setLocation(location);
+                            b.setZone(zone);
+                            b.setBinType(binType);
+                            b.setFillLevel(Integer.parseInt(fillLevel));
+                            b.setBatteryLevel(Integer.parseInt(batteryLevel));
+                            b.setStatus(status);
+                            JOptionPane.showMessageDialog(null, "Bin has been successfully updated");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Bin ID not found, try again");
+                        }
+                    }
+                }
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Fill level and battery level must be numbers.");
+        }
+    }//GEN-LAST:event_updateBTNActionPerformed
 
     private void clearBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBTNActionPerformed
         // TODO add your handling code here:
@@ -511,8 +543,102 @@ public class SmartBinGUI extends javax.swing.JFrame {
         fillLvlTF.setText("");
         battLvlTF.setText("");
         statusCB.setSelectedItem("None");
-        resultsTA.append("");
+        resultsTA.setText("");
     }//GEN-LAST:event_clearBTNActionPerformed
+
+    private void searchBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBTNActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (Bins.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Array list is empty");
+
+            } else {
+
+                if (binIdTF.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please fill BinID field");
+                } else {
+                    String binID = binIdTF.getText();
+                    for (Bin b : Bins) {
+                        if (b.getBinID().equalsIgnoreCase(binID)) {
+                            resultsTA.append("BinID: " + b.getBinID() + "\n"
+                                            + "Location: " + b.getLocation() + "\n" 
+                                            + "Zone: " + b.getZone() + "\n"
+                                            + "BinType: " + b.getBinType() + "\n"
+                                            + "FillLevel: " + b.getFillLevel() + "\n"
+                                            + "BatteryLevel: " + b.getBatteryLevel() + "\n"
+                                            + "Status: " + b.getStatus());
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Bin ID not found, try again");
+                        }
+                    }
+                }
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Fill level and battery level must be numbers.");
+        }
+        
+    }//GEN-LAST:event_searchBTNActionPerformed
+
+    private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (Bins.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Array list is empty");
+
+            } else {
+
+                if (binIdTF.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please fill BinID field");
+                } else {
+                    String binID = binIdTF.getText();
+                    for (Bin b : Bins) {
+                        if (b.getBinID().equalsIgnoreCase(binID)) {
+                            Bins.remove(b);
+                            JOptionPane.showMessageDialog(null, "Bin has been successfully removed");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Bin ID not found, try again");
+                        }
+                    }
+                }
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Fill level and battery level must be numbers.");
+        }
+    }//GEN-LAST:event_deleteBTNActionPerformed
+
+    private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(binIdTF.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"Please fill all fields");
+                return;
+            } else {
+
+                String binID = binIdTF.getText();
+                String location = locationTF.getText();
+                String zone = zoneTF.getText();
+                String binType = (String) binTypeCB.getSelectedItem();
+                String fillLevel = fillLvlTF.getText();
+                String batteryLevel = battLvlTF.getText();
+                String status = (String) statusCB.getSelectedItem();
+
+                Bin b = new Bin();
+
+                b.setBinID(binID);
+                b.setLocation(location);
+                b.setZone(zone);
+                b.setBinType(binType);
+                b.setFillLevel(Integer.parseInt(fillLevel));
+                b.setBatteryLevel(Integer.parseInt(batteryLevel));
+                b.setStatus(status);
+
+                Bins.add(b);
+                JOptionPane.showMessageDialog(null, "Bin successfully added!");
+            }
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Fill level and battery level must be numbers.");
+        }
+    }//GEN-LAST:event_addBTNActionPerformed
 
     /**
      * @param args the command line arguments
