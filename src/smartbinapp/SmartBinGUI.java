@@ -16,6 +16,9 @@ public class SmartBinGUI extends javax.swing.JFrame {
     // Queue and Stack objects for operations
     QueueInterface q = new Queue();
     StackInterface s = new Stack();
+    
+    // Single linked list creation
+    SLList linkedList = new SLList();
     /**
      * Creates new form GuiApp
      */
@@ -42,6 +45,8 @@ public class SmartBinGUI extends javax.swing.JFrame {
         editLBL = new javax.swing.JLabel();
         addQSBTN = new javax.swing.JButton();
         addQSLBL = new javax.swing.JLabel();
+        SLListBTN = new javax.swing.JButton();
+        SLListLBL = new javax.swing.JLabel();
         linePNL = new javax.swing.JPanel();
         cardPNL = new javax.swing.JPanel();
         editPNL = new javax.swing.JPanel();
@@ -92,6 +97,24 @@ public class SmartBinGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         ClearBTN1 = new javax.swing.JButton();
+        addSLListPNL = new javax.swing.JPanel();
+        SLListTitle = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        positionLBL = new javax.swing.JLabel();
+        resultsLBL1 = new javax.swing.JLabel();
+        itemLBL = new javax.swing.JLabel();
+        positionTF = new javax.swing.JTextField();
+        itemTF = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        SLListTA = new javax.swing.JTextArea();
+        addNodeBTN = new javax.swing.JButton();
+        searchNodeBTN = new javax.swing.JButton();
+        updateNodeBTN = new javax.swing.JButton();
+        deleteNodeBTN = new javax.swing.JButton();
+        showAllNodeBTN = new javax.swing.JButton();
+        clearNodeBTN = new javax.swing.JButton();
+        getNodeBTN = new javax.swing.JButton();
+        insertBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,6 +159,18 @@ public class SmartBinGUI extends javax.swing.JFrame {
         addQSLBL.setForeground(new java.awt.Color(255, 255, 255));
         addQSLBL.setText("Add Queue/Stack");
 
+        SLListBTN.setBackground(new java.awt.Color(0, 153, 255));
+        SLListBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SLList-icon.png"))); // NOI18N
+        SLListBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SLListBTNActionPerformed(evt);
+            }
+        });
+
+        SLListLBL.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        SLListLBL.setForeground(new java.awt.Color(255, 255, 255));
+        SLListLBL.setText("Add Linked List");
+
         javax.swing.GroupLayout navPNLLayout = new javax.swing.GroupLayout(navPNL);
         navPNL.setLayout(navPNLLayout);
         navPNLLayout.setHorizontalGroup(
@@ -144,6 +179,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 .addGroup(navPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addQSBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(editBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SLListBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(exitBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(navPNLLayout.createSequentialGroup()
                         .addGroup(navPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,13 +188,15 @@ public class SmartBinGUI extends javax.swing.JFrame {
                                 .addComponent(addQSLBL))
                             .addGroup(navPNLLayout.createSequentialGroup()
                                 .addGap(38, 38, 38)
-                                .addComponent(editLBL)))
+                                .addComponent(editLBL))
+                            .addGroup(navPNLLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(SLListLBL))
+                            .addGroup(navPNLLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(exitLBL)))
                         .addGap(0, 8, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(navPNLLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(exitLBL)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         navPNLLayout.setVerticalGroup(
             navPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,13 +209,17 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addQSLBL)
                 .addGap(18, 18, 18)
+                .addComponent(SLListBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SLListLBL)
+                .addGap(18, 18, 18)
                 .addComponent(exitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(exitLBL)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(navPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 450));
+        getContentPane().add(navPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 550));
 
         linePNL.setBackground(new java.awt.Color(0, 204, 204));
         linePNL.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -191,10 +233,10 @@ public class SmartBinGUI extends javax.swing.JFrame {
         );
         linePNLLayout.setVerticalGroup(
             linePNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 446, Short.MAX_VALUE)
+            .addGap(0, 546, Short.MAX_VALUE)
         );
 
-        getContentPane().add(linePNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, 450));
+        getContentPane().add(linePNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, 550));
 
         cardPNL.setBackground(new java.awt.Color(0, 102, 102));
         cardPNL.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -214,84 +256,84 @@ public class SmartBinGUI extends javax.swing.JFrame {
         resultsLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         resultsLBL.setForeground(new java.awt.Color(255, 255, 255));
         resultsLBL.setText("Results:");
-        editPNL.add(resultsLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+        editPNL.add(resultsLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
 
         binIdLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binIdLBL.setForeground(new java.awt.Color(255, 255, 255));
         binIdLBL.setText("BinID:");
-        editPNL.add(binIdLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        editPNL.add(binIdLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         zoneLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         zoneLBL.setForeground(new java.awt.Color(255, 255, 255));
         zoneLBL.setText("Zone:");
-        editPNL.add(zoneLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        editPNL.add(zoneLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         fillLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fillLBL.setForeground(new java.awt.Color(255, 255, 255));
         fillLBL.setText("Fill Level:");
-        editPNL.add(fillLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        editPNL.add(fillLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         statusLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         statusLBL.setForeground(new java.awt.Color(255, 255, 255));
         statusLBL.setText("Status:");
-        editPNL.add(statusLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        editPNL.add(statusLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         locationLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         locationLBL.setForeground(new java.awt.Color(255, 255, 255));
         locationLBL.setText("Location:");
-        editPNL.add(locationLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, -1, -1));
+        editPNL.add(locationLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
 
         binTypeLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binTypeLBL.setForeground(new java.awt.Color(255, 255, 255));
         binTypeLBL.setText("Bin Type:");
-        editPNL.add(binTypeLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+        editPNL.add(binTypeLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
         battLvlLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         battLvlLBL.setForeground(new java.awt.Color(255, 255, 255));
         battLvlLBL.setText("Battery Level:");
-        editPNL.add(battLvlLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
+        editPNL.add(battLvlLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
 
         battLvlTF.setBackground(new java.awt.Color(0, 0, 0));
         battLvlTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         battLvlTF.setForeground(new java.awt.Color(255, 255, 255));
         battLvlTF.setCaretColor(new java.awt.Color(255, 255, 255));
-        editPNL.add(battLvlTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 150, -1));
+        editPNL.add(battLvlTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 150, -1));
 
         zoneTF.setBackground(new java.awt.Color(0, 0, 0));
         zoneTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         zoneTF.setForeground(new java.awt.Color(255, 255, 255));
         zoneTF.setCaretColor(new java.awt.Color(255, 255, 255));
-        editPNL.add(zoneTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 150, -1));
+        editPNL.add(zoneTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 150, -1));
 
         fillLvlTF.setBackground(new java.awt.Color(0, 0, 0));
         fillLvlTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fillLvlTF.setForeground(new java.awt.Color(255, 255, 255));
         fillLvlTF.setCaretColor(new java.awt.Color(255, 255, 255));
-        editPNL.add(fillLvlTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 150, -1));
+        editPNL.add(fillLvlTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 150, -1));
 
         binTypeCB.setBackground(new java.awt.Color(0, 0, 0));
         binTypeCB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binTypeCB.setForeground(new java.awt.Color(255, 255, 255));
         binTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "General Waste", "Recycling", "Organic" }));
-        editPNL.add(binTypeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 150, -1));
+        editPNL.add(binTypeCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 150, -1));
 
         binIdTF.setBackground(new java.awt.Color(0, 0, 0));
         binIdTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binIdTF.setForeground(new java.awt.Color(255, 255, 255));
         binIdTF.setCaretColor(new java.awt.Color(255, 255, 255));
-        editPNL.add(binIdTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 150, -1));
+        editPNL.add(binIdTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 150, -1));
 
         statusCB.setBackground(new java.awt.Color(0, 0, 0));
         statusCB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         statusCB.setForeground(new java.awt.Color(255, 255, 255));
         statusCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Active", "Full", "Needs Maintenance", "Offline" }));
-        editPNL.add(statusCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 150, -1));
+        editPNL.add(statusCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 150, -1));
 
         locationTF.setBackground(new java.awt.Color(0, 0, 0));
         locationTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         locationTF.setForeground(new java.awt.Color(255, 255, 255));
         locationTF.setCaretColor(new java.awt.Color(255, 255, 255));
-        editPNL.add(locationTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 150, -1));
+        editPNL.add(locationTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 150, -1));
 
         resultsTA.setEditable(false);
         resultsTA.setBackground(new java.awt.Color(0, 0, 0));
@@ -301,7 +343,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
         resultsTA.setRows(5);
         jScrollPane1.setViewportView(resultsTA);
 
-        editPNL.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 310, 150));
+        editPNL.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 310, 150));
 
         clearBTN.setBackground(new java.awt.Color(0, 0, 0));
         clearBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -312,7 +354,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 clearBTNActionPerformed(evt);
             }
         });
-        editPNL.add(clearBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
+        editPNL.add(clearBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, -1, -1));
 
         updateBTN.setBackground(new java.awt.Color(0, 0, 0));
         updateBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -323,7 +365,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 updateBTNActionPerformed(evt);
             }
         });
-        editPNL.add(updateBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, -1));
+        editPNL.add(updateBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
 
         searchBTN.setBackground(new java.awt.Color(0, 0, 0));
         searchBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -334,7 +376,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 searchBTNActionPerformed(evt);
             }
         });
-        editPNL.add(searchBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, -1));
+        editPNL.add(searchBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, -1, -1));
 
         deleteBTN.setBackground(new java.awt.Color(0, 0, 0));
         deleteBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -345,7 +387,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 deleteBTNActionPerformed(evt);
             }
         });
-        editPNL.add(deleteBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, -1, -1));
+        editPNL.add(deleteBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bin-icon.png"))); // NOI18N
         editPNL.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
@@ -359,7 +401,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 addBTNActionPerformed(evt);
             }
         });
-        editPNL.add(addBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
+        editPNL.add(addBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
 
         cardPNL.add(editPNL, "card2");
 
@@ -376,18 +418,18 @@ public class SmartBinGUI extends javax.swing.JFrame {
         qOutputLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         qOutputLBL.setForeground(new java.awt.Color(255, 255, 255));
         qOutputLBL.setText("Queue Output:");
-        addQSPNL.add(qOutputLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, -1));
+        addQSPNL.add(qOutputLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
 
         binIdLBL1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binIdLBL1.setForeground(new java.awt.Color(255, 255, 255));
         binIdLBL1.setText("BinID:");
-        addQSPNL.add(binIdLBL1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        addQSPNL.add(binIdLBL1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         binIdTF1.setBackground(new java.awt.Color(0, 0, 0));
         binIdTF1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binIdTF1.setForeground(new java.awt.Color(255, 255, 255));
         binIdTF1.setCaretColor(new java.awt.Color(255, 255, 255));
-        addQSPNL.add(binIdTF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, -1));
+        addQSPNL.add(binIdTF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 170, -1));
 
         pQueueBTN.setBackground(new java.awt.Color(0, 0, 0));
         pQueueBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -398,7 +440,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 pQueueBTNActionPerformed(evt);
             }
         });
-        addQSPNL.add(pQueueBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
+        addQSPNL.add(pQueueBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
 
         enqueueBTN.setBackground(new java.awt.Color(0, 0, 0));
         enqueueBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -409,7 +451,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 enqueueBTNActionPerformed(evt);
             }
         });
-        addQSPNL.add(enqueueBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+        addQSPNL.add(enqueueBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         dequeueBTN.setBackground(new java.awt.Color(0, 0, 0));
         dequeueBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -420,7 +462,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 dequeueBTNActionPerformed(evt);
             }
         });
-        addQSPNL.add(dequeueBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
+        addQSPNL.add(dequeueBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
 
         qOutputTA.setEditable(false);
         qOutputTA.setBackground(new java.awt.Color(0, 0, 0));
@@ -430,28 +472,28 @@ public class SmartBinGUI extends javax.swing.JFrame {
         qOutputTA.setRows(5);
         jScrollPane2.setViewportView(qOutputTA);
 
-        addQSPNL.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 230, -1));
+        addQSPNL.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 230, -1));
 
         qTitleLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         qTitleLBL.setForeground(new java.awt.Color(255, 255, 255));
         qTitleLBL.setText("Queue Section:");
-        addQSPNL.add(qTitleLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        addQSPNL.add(qTitleLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         sTitleLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sTitleLBL.setForeground(new java.awt.Color(255, 255, 255));
         sTitleLBL.setText("Stack Section:");
-        addQSPNL.add(sTitleLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        addQSPNL.add(sTitleLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         binIdLBL2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binIdLBL2.setForeground(new java.awt.Color(255, 255, 255));
         binIdLBL2.setText("BinID:");
-        addQSPNL.add(binIdLBL2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        addQSPNL.add(binIdLBL2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         binIdTF2.setBackground(new java.awt.Color(0, 0, 0));
         binIdTF2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         binIdTF2.setForeground(new java.awt.Color(255, 255, 255));
         binIdTF2.setCaretColor(new java.awt.Color(255, 255, 255));
-        addQSPNL.add(binIdTF2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 170, -1));
+        addQSPNL.add(binIdTF2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 170, -1));
 
         sOutputTA.setEditable(false);
         sOutputTA.setBackground(new java.awt.Color(0, 0, 0));
@@ -461,12 +503,12 @@ public class SmartBinGUI extends javax.swing.JFrame {
         sOutputTA.setRows(5);
         jScrollPane3.setViewportView(sOutputTA);
 
-        addQSPNL.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 230, -1));
+        addQSPNL.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 230, -1));
 
         sOutputLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sOutputLBL.setForeground(new java.awt.Color(255, 255, 255));
         sOutputLBL.setText("Stack Output:");
-        addQSPNL.add(sOutputLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
+        addQSPNL.add(sOutputLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
 
         pStackBTN.setBackground(new java.awt.Color(0, 0, 0));
         pStackBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -477,7 +519,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 pStackBTNActionPerformed(evt);
             }
         });
-        addQSPNL.add(pStackBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
+        addQSPNL.add(pStackBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
 
         popBTN.setBackground(new java.awt.Color(0, 0, 0));
         popBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -488,7 +530,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 popBTNActionPerformed(evt);
             }
         });
-        addQSPNL.add(popBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
+        addQSPNL.add(popBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, -1, -1));
 
         pushBTN.setBackground(new java.awt.Color(0, 0, 0));
         pushBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -499,7 +541,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 pushBTNActionPerformed(evt);
             }
         });
-        addQSPNL.add(pushBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
+        addQSPNL.add(pushBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stack-icon.png"))); // NOI18N
         addQSPNL.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
@@ -516,11 +558,152 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 ClearBTN1ActionPerformed(evt);
             }
         });
-        addQSPNL.add(ClearBTN1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, -1));
+        addQSPNL.add(ClearBTN1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
 
         cardPNL.add(addQSPNL, "card3");
 
-        getContentPane().add(cardPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 580, 450));
+        addSLListPNL.setBackground(new java.awt.Color(0, 102, 102));
+        addSLListPNL.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addSLListPNL.setForeground(new java.awt.Color(255, 255, 255));
+        addSLListPNL.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        SLListTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        SLListTitle.setForeground(new java.awt.Color(255, 255, 255));
+        SLListTitle.setText("Linked List Manager");
+        addSLListPNL.add(SLListTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SLList-icon.png"))); // NOI18N
+        addSLListPNL.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+
+        positionLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        positionLBL.setForeground(new java.awt.Color(255, 255, 255));
+        positionLBL.setText("Position:");
+        addSLListPNL.add(positionLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        resultsLBL1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        resultsLBL1.setForeground(new java.awt.Color(255, 255, 255));
+        resultsLBL1.setText("Results:");
+        addSLListPNL.add(resultsLBL1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
+
+        itemLBL.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        itemLBL.setForeground(new java.awt.Color(255, 255, 255));
+        itemLBL.setText("Item:");
+        addSLListPNL.add(itemLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
+
+        positionTF.setBackground(new java.awt.Color(0, 0, 0));
+        positionTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        positionTF.setForeground(new java.awt.Color(255, 255, 255));
+        positionTF.setCaretColor(new java.awt.Color(255, 255, 255));
+        addSLListPNL.add(positionTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 160, -1));
+
+        itemTF.setBackground(new java.awt.Color(0, 0, 0));
+        itemTF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        itemTF.setForeground(new java.awt.Color(255, 255, 255));
+        itemTF.setCaretColor(new java.awt.Color(255, 255, 255));
+        addSLListPNL.add(itemTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 160, -1));
+
+        SLListTA.setEditable(false);
+        SLListTA.setBackground(new java.awt.Color(0, 0, 0));
+        SLListTA.setColumns(20);
+        SLListTA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        SLListTA.setForeground(new java.awt.Color(255, 255, 255));
+        SLListTA.setRows(5);
+        SLListTA.setCaretColor(new java.awt.Color(255, 255, 255));
+        jScrollPane4.setViewportView(SLListTA);
+
+        addSLListPNL.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 320, 150));
+
+        addNodeBTN.setBackground(new java.awt.Color(0, 0, 0));
+        addNodeBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        addNodeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        addNodeBTN.setText("Add Node");
+        addNodeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNodeBTNActionPerformed(evt);
+            }
+        });
+        addSLListPNL.add(addNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+
+        searchNodeBTN.setBackground(new java.awt.Color(0, 0, 0));
+        searchNodeBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        searchNodeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        searchNodeBTN.setText("Search Node");
+        searchNodeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchNodeBTNActionPerformed(evt);
+            }
+        });
+        addSLListPNL.add(searchNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
+
+        updateNodeBTN.setBackground(new java.awt.Color(0, 0, 0));
+        updateNodeBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        updateNodeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        updateNodeBTN.setText("Update Node");
+        updateNodeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateNodeBTNActionPerformed(evt);
+            }
+        });
+        addSLListPNL.add(updateNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+
+        deleteNodeBTN.setBackground(new java.awt.Color(0, 0, 0));
+        deleteNodeBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        deleteNodeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        deleteNodeBTN.setText("Delete Node");
+        deleteNodeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteNodeBTNActionPerformed(evt);
+            }
+        });
+        addSLListPNL.add(deleteNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
+
+        showAllNodeBTN.setBackground(new java.awt.Color(0, 0, 0));
+        showAllNodeBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        showAllNodeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        showAllNodeBTN.setText("Show All Nodes");
+        showAllNodeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showAllNodeBTNActionPerformed(evt);
+            }
+        });
+        addSLListPNL.add(showAllNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+
+        clearNodeBTN.setBackground(new java.awt.Color(0, 0, 0));
+        clearNodeBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        clearNodeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        clearNodeBTN.setText("Clear");
+        clearNodeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearNodeBTNActionPerformed(evt);
+            }
+        });
+        addSLListPNL.add(clearNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, -1, -1));
+
+        getNodeBTN.setBackground(new java.awt.Color(0, 0, 0));
+        getNodeBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getNodeBTN.setForeground(new java.awt.Color(255, 255, 255));
+        getNodeBTN.setText("Get Node");
+        getNodeBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getNodeBTNActionPerformed(evt);
+            }
+        });
+        addSLListPNL.add(getNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
+
+        insertBTN.setBackground(new java.awt.Color(0, 0, 0));
+        insertBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        insertBTN.setForeground(new java.awt.Color(255, 255, 255));
+        insertBTN.setText("Insert at Postion");
+        insertBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertBTNActionPerformed(evt);
+            }
+        });
+        addSLListPNL.add(insertBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
+
+        cardPNL.add(addSLListPNL, "card4");
+
+        getContentPane().add(cardPNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 580, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -536,6 +719,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
         // shows edit panel and hides addQS panel
         editPNL.setVisible(true);
         addQSPNL.setVisible(false);
+        addSLListPNL.setVisible(false);
     }//GEN-LAST:event_editBTNActionPerformed
 
     private void addQSBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addQSBTNActionPerformed
@@ -543,6 +727,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
         // shows addQS panel and hides edit panel
         editPNL.setVisible(false);
         addQSPNL.setVisible(true);
+        addSLListPNL.setVisible(false);
     }//GEN-LAST:event_addQSBTNActionPerformed
 
     private void updateBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBTNActionPerformed
@@ -857,6 +1042,236 @@ public class SmartBinGUI extends javax.swing.JFrame {
         sOutputTA.setText("");
     }//GEN-LAST:event_ClearBTN1ActionPerformed
 
+    private void SLListBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SLListBTNActionPerformed
+        // TODO add your handling code here:
+        editPNL.setVisible(false);
+        addQSPNL.setVisible(false);
+        addSLListPNL.setVisible(true);
+    }//GEN-LAST:event_SLListBTNActionPerformed
+
+    private void addNodeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNodeBTNActionPerformed
+        // TODO add your handling code here:
+        try {
+            // Get the item from the text field
+            String item = itemTF.getText();
+
+            // Check if the item field is empty
+            if(item.equals("")) {
+                JOptionPane.showMessageDialog(null, "Please enter an item");
+                return;
+            }
+
+            // Add the item to the end of the linked list
+            linkedList.add(item);
+
+            // Show success message
+            JOptionPane.showMessageDialog(null, "Item added to linked list");
+
+            // Show the updated list in the text area
+            SLListTA.setText(linkedList.displayList());
+
+            // Clear input fields
+            itemTF.setText("");
+            positionTF.setText("");
+
+        } catch(Exception e) {
+            // Show error message if something goes wrong
+            JOptionPane.showMessageDialog(null, "Error adding item");
+        }
+    }//GEN-LAST:event_addNodeBTNActionPerformed
+
+    private void searchNodeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchNodeBTNActionPerformed
+        // TODO add your handling code here:
+        // Get the item from the text field
+        String item = itemTF.getText();
+
+        // Check if the item field is empty
+        if(item.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please enter an item to search");
+            return;
+        }
+
+        // Search for the item in the linked list
+        int pos = linkedList.search(item);
+
+        // If item is not found, show message
+        if(pos == -1) {
+            JOptionPane.showMessageDialog(null, "Item not found");
+        } else {
+            // If item is found, show the position
+            JOptionPane.showMessageDialog(null, "Item found at position " + pos);
+        }
+    }//GEN-LAST:event_searchNodeBTNActionPerformed
+
+    private void showAllNodeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllNodeBTNActionPerformed
+        // TODO add your handling code here:
+        // Check if the linked list is empty
+        if(linkedList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Linked list is empty");
+        } else {
+            // Display all items in the text area
+            SLListTA.setText(linkedList.displayList());
+        }
+    }//GEN-LAST:event_showAllNodeBTNActionPerformed
+
+    private void updateNodeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateNodeBTNActionPerformed
+        // TODO add your handling code here:
+        try {
+            // Check if position or item field is empty
+            if(positionTF.getText().equals("") || itemTF.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Please enter position and new item");
+                return;
+            }
+
+            // Convert the position to an integer
+            int position = Integer.parseInt(positionTF.getText());
+
+            // Get the new item text
+            String item = itemTF.getText();
+
+            // Check if the position is valid
+            if(position < 1 || position > linkedList.size()) {
+                JOptionPane.showMessageDialog(null, "Invalid position");
+                return;
+            }
+
+            // Update the item at the given position
+            linkedList.set(position, item);
+
+            // Show success message
+            JOptionPane.showMessageDialog(null, "Item updated");
+
+            // Refresh the text area
+            SLListTA.setText(linkedList.displayList());
+
+            // Clear input fields
+            itemTF.setText("");
+            positionTF.setText("");
+
+        } catch(NumberFormatException e) {
+            // Show error if position is not a number
+            JOptionPane.showMessageDialog(null, "Position must be a number");
+        }
+    }//GEN-LAST:event_updateNodeBTNActionPerformed
+
+    private void deleteNodeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteNodeBTNActionPerformed
+        // TODO add your handling code here:
+        try {
+            // Check if the position field is empty
+            if(positionTF.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Please enter a position");
+                return;
+            }
+
+            // Convert the position to an integer
+            int position = Integer.parseInt(positionTF.getText());
+
+            // Check if the position is valid
+            if(position < 1 || position > linkedList.size()) {
+                JOptionPane.showMessageDialog(null, "Invalid position");
+                return;
+            }
+
+            // Remove the item from the linked list
+            linkedList.remove(position);
+
+            // Show success message
+            JOptionPane.showMessageDialog(null, "Item deleted");
+
+            // Refresh the text area
+            SLListTA.setText(linkedList.displayList());
+
+            // Clear input fields
+            itemTF.setText("");
+            positionTF.setText("");
+
+        } catch(NumberFormatException e) {
+            // Show error if position is not a number
+            JOptionPane.showMessageDialog(null, "Position must be a number");
+        }
+    }//GEN-LAST:event_deleteNodeBTNActionPerformed
+
+    private void clearNodeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearNodeBTNActionPerformed
+        // TODO add your handling code here:
+        // Clear both text fields
+        positionTF.setText("");
+        itemTF.setText("");
+
+        // Clear the output text area
+        SLListTA.setText("");
+    }//GEN-LAST:event_clearNodeBTNActionPerformed
+
+    private void getNodeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getNodeBTNActionPerformed
+        // TODO add your handling code here:
+        
+         try {
+            // Check if the position field is empty
+            if(positionTF.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Please enter a position");
+                return;
+            }
+
+            // Convert the position to an integer
+            int position = Integer.parseInt(positionTF.getText());
+
+            // Check if the position is valid
+            if(position < 1 || position > linkedList.size()) {
+                JOptionPane.showMessageDialog(null, "Invalid position");
+                return;
+            }
+
+            // Get the item at the given position
+            Object item = linkedList.get(position);
+
+            // Show the item to the user
+            JOptionPane.showMessageDialog(null, "Item at position " + position + ": " + item);
+
+        } catch(NumberFormatException e) {
+            // Show error if position is not a number
+            JOptionPane.showMessageDialog(null, "Position must be a number");
+        }
+    }//GEN-LAST:event_getNodeBTNActionPerformed
+
+    private void insertBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertBTNActionPerformed
+        // TODO add your handling code here:
+        try {
+            // Check if position or item field is empty
+            if(positionTF.getText().equals("") || itemTF.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Please enter position and item");
+                return;
+            }
+
+            // Convert the position to an integer
+            int position = Integer.parseInt(positionTF.getText());
+
+            // Get the item text
+            String item = itemTF.getText();
+
+            // Check if the position is valid
+            if(position < 1 || position > linkedList.size() + 1) {
+                JOptionPane.showMessageDialog(null, "Invalid position");
+                return;
+            }
+
+            // Add the item at the chosen position
+            linkedList.add(position, item);
+
+            // Show success message
+            JOptionPane.showMessageDialog(null, "Item added at position " + position);
+
+            // Refresh the text area
+            SLListTA.setText(linkedList.displayList());
+
+            // Clear input fields
+            itemTF.setText("");
+            positionTF.setText("");
+
+        } catch(NumberFormatException e) {
+            // Show error if position is not a number
+            JOptionPane.showMessageDialog(null, "Position must be a number");
+        }
+    }//GEN-LAST:event_insertBTNActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -895,11 +1310,17 @@ public class SmartBinGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ClearBTN1;
+    private javax.swing.JButton SLListBTN;
+    private javax.swing.JLabel SLListLBL;
+    private javax.swing.JTextArea SLListTA;
+    private javax.swing.JLabel SLListTitle;
     private javax.swing.JButton addBTN;
+    private javax.swing.JButton addNodeBTN;
     private javax.swing.JButton addQSBTN;
     private javax.swing.JLabel addQSLBL;
     private javax.swing.JPanel addQSPNL;
     private javax.swing.JLabel addQSTitle;
+    private javax.swing.JPanel addSLListPNL;
     private javax.swing.JLabel battLvlLBL;
     private javax.swing.JTextField battLvlTF;
     private javax.swing.JLabel binIdLBL;
@@ -912,7 +1333,9 @@ public class SmartBinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel binTypeLBL;
     private javax.swing.JPanel cardPNL;
     private javax.swing.JButton clearBTN;
+    private javax.swing.JButton clearNodeBTN;
     private javax.swing.JButton deleteBTN;
+    private javax.swing.JButton deleteNodeBTN;
     private javax.swing.JButton dequeueBTN;
     private javax.swing.JButton editBTN;
     private javax.swing.JLabel editLBL;
@@ -923,12 +1346,18 @@ public class SmartBinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel exitLBL;
     private javax.swing.JLabel fillLBL;
     private javax.swing.JTextField fillLvlTF;
+    private javax.swing.JButton getNodeBTN;
+    private javax.swing.JButton insertBTN;
+    private javax.swing.JLabel itemLBL;
+    private javax.swing.JTextField itemTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel linePNL;
     private javax.swing.JLabel locationLBL;
     private javax.swing.JTextField locationTF;
@@ -936,19 +1365,25 @@ public class SmartBinGUI extends javax.swing.JFrame {
     private javax.swing.JButton pQueueBTN;
     private javax.swing.JButton pStackBTN;
     private javax.swing.JButton popBTN;
+    private javax.swing.JLabel positionLBL;
+    private javax.swing.JTextField positionTF;
     private javax.swing.JButton pushBTN;
     private javax.swing.JLabel qOutputLBL;
     private javax.swing.JTextArea qOutputTA;
     private javax.swing.JLabel qTitleLBL;
     private javax.swing.JLabel resultsLBL;
+    private javax.swing.JLabel resultsLBL1;
     private javax.swing.JTextArea resultsTA;
     private javax.swing.JLabel sOutputLBL;
     private javax.swing.JTextArea sOutputTA;
     private javax.swing.JLabel sTitleLBL;
     private javax.swing.JButton searchBTN;
+    private javax.swing.JButton searchNodeBTN;
+    private javax.swing.JButton showAllNodeBTN;
     private javax.swing.JComboBox<String> statusCB;
     private javax.swing.JLabel statusLBL;
     private javax.swing.JButton updateBTN;
+    private javax.swing.JButton updateNodeBTN;
     private javax.swing.JLabel zoneLBL;
     private javax.swing.JTextField zoneTF;
     // End of variables declaration//GEN-END:variables
