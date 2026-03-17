@@ -18,7 +18,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
     StackInterface s = new Stack();
     
     // Single linked list creation
-    SLList linkedList = new SLList();
+    SLListInterface linkedList = new SLList();
     /**
      * Creates new form GuiApp
      */
@@ -113,8 +113,6 @@ public class SmartBinGUI extends javax.swing.JFrame {
         deleteNodeBTN = new javax.swing.JButton();
         showAllNodeBTN = new javax.swing.JButton();
         clearNodeBTN = new javax.swing.JButton();
-        getNodeBTN = new javax.swing.JButton();
-        insertBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -666,7 +664,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 showAllNodeBTNActionPerformed(evt);
             }
         });
-        addSLListPNL.add(showAllNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+        addSLListPNL.add(showAllNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
 
         clearNodeBTN.setBackground(new java.awt.Color(0, 0, 0));
         clearNodeBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -677,29 +675,7 @@ public class SmartBinGUI extends javax.swing.JFrame {
                 clearNodeBTNActionPerformed(evt);
             }
         });
-        addSLListPNL.add(clearNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, -1, -1));
-
-        getNodeBTN.setBackground(new java.awt.Color(0, 0, 0));
-        getNodeBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getNodeBTN.setForeground(new java.awt.Color(255, 255, 255));
-        getNodeBTN.setText("Get Node");
-        getNodeBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getNodeBTNActionPerformed(evt);
-            }
-        });
-        addSLListPNL.add(getNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
-
-        insertBTN.setBackground(new java.awt.Color(0, 0, 0));
-        insertBTN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        insertBTN.setForeground(new java.awt.Color(255, 255, 255));
-        insertBTN.setText("Insert at Postion");
-        insertBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertBTNActionPerformed(evt);
-            }
-        });
-        addSLListPNL.add(insertBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
+        addSLListPNL.add(clearNodeBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
 
         cardPNL.add(addSLListPNL, "card4");
 
@@ -1201,77 +1177,6 @@ public class SmartBinGUI extends javax.swing.JFrame {
         SLListTA.setText("");
     }//GEN-LAST:event_clearNodeBTNActionPerformed
 
-    private void getNodeBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getNodeBTNActionPerformed
-        // TODO add your handling code here:
-        
-         try {
-            // Check if the position field is empty
-            if(positionTF.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Please enter a position");
-                return;
-            }
-
-            // Convert the position to an integer
-            int position = Integer.parseInt(positionTF.getText());
-
-            // Check if the position is valid
-            if(position < 1 || position > linkedList.size()) {
-                JOptionPane.showMessageDialog(null, "Invalid position");
-                return;
-            }
-
-            // Get the item at the given position
-            Object item = linkedList.get(position);
-
-            // Show the item to the user
-            JOptionPane.showMessageDialog(null, "Item at position " + position + ": " + item);
-
-        } catch(NumberFormatException e) {
-            // Show error if position is not a number
-            JOptionPane.showMessageDialog(null, "Position must be a number");
-        }
-    }//GEN-LAST:event_getNodeBTNActionPerformed
-
-    private void insertBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertBTNActionPerformed
-        // TODO add your handling code here:
-        try {
-            // Check if position or item field is empty
-            if(positionTF.getText().equals("") || itemTF.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Please enter position and item");
-                return;
-            }
-
-            // Convert the position to an integer
-            int position = Integer.parseInt(positionTF.getText());
-
-            // Get the item text
-            String item = itemTF.getText();
-
-            // Check if the position is valid
-            if(position < 1 || position > linkedList.size() + 1) {
-                JOptionPane.showMessageDialog(null, "Invalid position");
-                return;
-            }
-
-            // Add the item at the chosen position
-            linkedList.add(position, item);
-
-            // Show success message
-            JOptionPane.showMessageDialog(null, "Item added at position " + position);
-
-            // Refresh the text area
-            SLListTA.setText(linkedList.displayList());
-
-            // Clear input fields
-            itemTF.setText("");
-            positionTF.setText("");
-
-        } catch(NumberFormatException e) {
-            // Show error if position is not a number
-            JOptionPane.showMessageDialog(null, "Position must be a number");
-        }
-    }//GEN-LAST:event_insertBTNActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1346,8 +1251,6 @@ public class SmartBinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel exitLBL;
     private javax.swing.JLabel fillLBL;
     private javax.swing.JTextField fillLvlTF;
-    private javax.swing.JButton getNodeBTN;
-    private javax.swing.JButton insertBTN;
     private javax.swing.JLabel itemLBL;
     private javax.swing.JTextField itemTF;
     private javax.swing.JLabel jLabel1;

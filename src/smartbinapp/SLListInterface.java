@@ -32,4 +32,13 @@ public interface SLListInterface {
 
     // Prints all elements in the list (mainly used for testing)
     public void printList();
+    
+    // Prints contents of the list 
+    public String displayList();
+    
+    // Sets position of node
+    public void set(int iPosition, Object newElement);
+    
+    // Searches Node traversing the list
+    public int search(Object target);
 }
